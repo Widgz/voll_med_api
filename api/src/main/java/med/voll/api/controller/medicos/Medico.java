@@ -30,7 +30,7 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
-    public Medico(DadosMedico json) {
+    public Medico(DadosCadastroMedico json) {
         this.nome = json.nome();
         this.email = json.email();
         this.crm = json.crm();
