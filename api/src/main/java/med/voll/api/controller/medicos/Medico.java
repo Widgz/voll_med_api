@@ -30,12 +30,32 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo;
+
     public Medico(DadosCadastroMedico json) {
+        this.ativo = true;
         this.nome = json.nome();
         this.email = json.email();
         this.crm = json.crm();
         this.especialidade = json.especialidade();
         this.endereco = new Endereco(json.endereco());
         this.telefone = json.telefone();
+    }
+
+    public void atualizarDadosMedico(DadosAtualizacaoMedico json) {
+        if (json.nome() != null) {
+            this.nome = json.nome();
+        }
+        if (json.telefone() != null) {
+            this.telefone = json.telefone();
+        }
+        if (json.endereco() != null) {
+            this.endereco.atualizarDadosEndereco(json.endereco());
+        }
+
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }
